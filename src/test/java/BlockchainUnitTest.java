@@ -38,6 +38,7 @@ public class BlockchainUnitTest {
     @Test
     public void givenBlockchain_whenValidated_thenSuccess() {
         boolean flag = true;
+        //loop through blockchain to check hashes:
         for (int i = 0; i < blockchain.size(); i++) {
             String previousHash = i == 0 ? "0"
                     : blockchain.get(i - 1)
