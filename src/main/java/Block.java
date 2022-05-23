@@ -35,15 +35,23 @@ public class Block {
         MessageDigest digest = null;
         byte[] bytes = null;
         try {
+           //Applies Sha256 to a string and returns the result. 
             digest = MessageDigest.getInstance("SHA-256");
             bytes = digest.digest(dataToHash.getBytes("UTF-8"));
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             logger.log(Level.SEVERE, ex.getMessage());
         }
+        //This will contain hash as hexidecimal
         StringBuffer buffer = new StringBuffer();
         for (byte b : bytes) {
             buffer.append(String.format("%02x", b));
         }
+        //or use this
+       /*for (int i = 0; i < hash.length; i++) {
+				String hex = Integer.toHexString(0xff & hash[i]);
+				if(hex.length() == 1) buffer.append('0');
+				buffer.append(hex);
+			}*/
         return buffer.toString();
     }
 
